@@ -1,5 +1,7 @@
 {
+  "name": "flower-time",
   "main": "node_modules/expo/AppEntry.js",
+  "private": true,
   "scripts": {
     "start": "expo start",
     "android": "expo start --android",
@@ -7,21 +9,28 @@
     "eject": "expo eject"
   },
   "dependencies": {
-    "aws-amplify": "^1.1.22",
-    "aws-amplify-react-native": "^2.1.8",
-    "aws-appsync": "^1.7.2",
-    "aws-appsync-react": "^1.2.7",
-    "expo": "^32.0.0",
+    "@aws-amplify/core": "^1.1.0",
+    "@aws-amplify/storage": "^1.1.0",
+    "@expo/vector-icons": "^10.0.5",
+    "aws-amplify": "^1.1.36",
+    "aws-amplify-react-native": "^2.1.16",
+    "aws-appsync": "^1.8.1",
+    "aws-appsync-react": "^1.2.9",
+    "buffer": "^5.2.1",
+    "expo": "^34.0.4",
+    "expo-image-picker": "~6.0.0",
+    "expo-permissions": "~6.0.0",
     "graphql-tag": "^2.10.1",
-    "native-base": "2.8.0",
-    "react": "16.5.0",
+    "native-base": "^2.13.5",
+    "react": "16.8.3",
     "react-apollo": "^2.5.2",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-32.0.0.tar.gz",
+    "react-native": "https://github.com/expo/react-native/archive/sdk-34.0.0.tar.gz",
     "react-native-aws3": "^0.0.8",
+    "rn-fetch-blob": "^0.10.13",
     "uuid": "^3.3.2"
   },
   "devDependencies": {
-    "babel-preset-expo": "^5.0.0"
-  },
-  "private": true
+    "babel-preset-expo": "^5.0.0",
+    "prettier": "^1.18.2"
+  }
 }
