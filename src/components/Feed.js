@@ -1,44 +1,32 @@
-import React from "react";
-import {
-  View,
-  Alert,
-  StyleSheet,
-  ScrollView,
-  RefreshControl,
-  ActionSheetIOS,
-  Platform
-} from "react-native";
-
-// Amplify
 import API, { graphqlOperation } from "@aws-amplify/api";
 import Auth from "@aws-amplify/auth";
 import Amplify from "@aws-amplify/core";
 import Storage from "@aws-amplify/storage";
-
-// Third party libs
-import { RNS3 } from "react-native-aws3"; // For sending pics to S3 instead of Storage.put()
 import { ImagePicker, Permissions } from "expo";
+import React from "react";
+import { compose, graphql } from "react-apollo";
+import {
+  ActionSheetIOS,
+  Alert,
+  Platform,
+  RefreshControl,
+  ScrollView,
+  StyleSheet,
+  View
+} from "react-native";
+import { RNS3 } from "react-native-aws3"; // For sending pics to S3 instead of Storage.put()
 import { v4 as uuid } from "uuid";
-
-// Local components
-import Header from "./Header";
-import PictureCard from "./PictureCard";
-import OptionsAndroid from "./OptionsAndroid";
-
-// Config imports
 import config from "../aws-exports";
-import keys from "../keys";
-
-// GraphQL mutations and queries
+import CreateFlagPicture from "../graphQL/CreateFlagPicture";
+import CreateLikePicture from "../graphQL/CreateLikePicture";
 import CreatePicture from "../graphQL/CreatePicture";
+import DeleteLikePicture from "../graphQL/DeleteLikePicture";
 import DeletePicture from "../graphQL/DeletePicture";
 import listPictures from "../graphQL/listPictures";
-import CreateLikePicture from "../graphQL/CreateLikePicture";
-import DeleteLikePicture from "../graphQL/DeleteLikePicture";
-import CreateFlagPicture from "../graphQL/CreateFlagPicture";
-
-// Apollo components
-import { graphql, compose } from "react-apollo";
+import keys from "../keys";
+import Header from "./Header";
+import OptionsAndroid from "./OptionsAndroid";
+import PictureCard from "./PictureCard";
 
 Amplify.configure(config);
 

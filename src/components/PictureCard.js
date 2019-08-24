@@ -1,15 +1,13 @@
+import { Ionicons } from "@expo/vector-icons";
+import { Card, Text } from "native-base";
 import React from "react";
 import {
-  View,
+  Dimensions,
   Image,
   StyleSheet,
-  Dimensions,
-  TouchableOpacity
+  TouchableOpacity,
+  View
 } from "react-native";
-
-import { Card, Text } from "native-base";
-import { Ionicons } from "@expo/vector-icons";
-
 import LikePictureButton from "./LikePictureButton";
 
 const PictureCard = ({

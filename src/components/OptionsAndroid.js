@@ -1,5 +1,5 @@
 import React from "react";
-import { View, Text, Modal, TouchableOpacity, StyleSheet } from "react-native";
+import { Modal, StyleSheet, Text, TouchableOpacity, View } from "react-native";
 
 const OptionsAndroid = ({
   user,
