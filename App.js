@@ -1,45 +1,39 @@
-import React from 'react'
-import { View } from 'react-native'
-import Feed from './src/components/Feed'
+import Auth from "@aws-amplify/auth";
+import Amplify from "@aws-amplify/core";
+import { withAuthenticator } from "aws-amplify-react-native";
+import AWSAppSyncClient from "aws-appsync";
+import { Rehydrated } from "aws-appsync-react";
+import React from "react";
+import { ApolloProvider } from "react-apollo";
+import { View } from "react-native";
+import awsconfig from "./src/aws-exports";
+import Feed from "./src/components/Feed";
 
-// Apollo
-import { Rehydrated } from 'aws-appsync-react'
-import { ApolloProvider } from 'react-apollo'
-
-// AppSync
-import AWSAppSyncClient from "aws-appsync"
-
-// Amplify
-import Auth from '@aws-amplify/auth'
-import Amplify from '@aws-amplify/core'
-import { withAuthenticator } from 'aws-amplify-react-native'
-import awsconfig from './src/aws-exports'
-
-Amplify.configure(awsconfig)
+Amplify.configure(awsconfig);
 
 // Create a client
-const GRAPHQL_API_REGION = awsconfig.aws_appsync_region
-const GRAPHQL_API_ENDPOINT_URL = awsconfig.aws_appsync_graphqlEndpoint
-const S3_BUCKET_REGION = awsconfig.aws_user_files_s3_bucket_region
-const S3_BUCKET_NAME = awsconfig.aws_user_files_s3_bucket
-const AUTH_TYPE = awsconfig.aws_appsync_authenticationType
+const GRAPHQL_API_REGION = awsconfig.aws_appsync_region;
+const GRAPHQL_API_ENDPOINT_URL = awsconfig.aws_appsync_graphqlEndpoint;
+const S3_BUCKET_REGION = awsconfig.aws_user_files_s3_bucket_region;
+const S3_BUCKET_NAME = awsconfig.aws_user_files_s3_bucket;
+const AUTH_TYPE = awsconfig.aws_appsync_authenticationType;
 
 const client = new AWSAppSyncClient({
   url: GRAPHQL_API_ENDPOINT_URL,
   region: GRAPHQL_API_REGION,
   auth: {
     type: AUTH_TYPE,
-    jwtToken: async () => (
-      await Auth.currentSession()).getAccessToken().getJwtToken(),
+    jwtToken: async () =>
+      (await Auth.currentSession()).getAccessToken().getJwtToken()
   },
   complexObjectsCredentials: () => Auth.currentCredentials(),
   disableOffline: true
-})
+});
 
 class App extends React.Component {
   render() {
     return (
-      <View style={{ flex: 1, backgroundColor: '#f7edf0' }}>
+      <View style={{ flex: 1, backgroundColor: "#f7edf0" }}>
         <Feed
           options={{
             bucket: S3_BUCKET_NAME,
@@ -47,12 +41,12 @@ class App extends React.Component {
           }}
         />
       </View>
-    )
+    );
   }
 }
 
 // Wrap the App with Amplify HOC. Set to true if you want to render sing out button
-const AppWithAuth = withAuthenticator(App, false)
+const AppWithAuth = withAuthenticator(App, false);
 
 export default () => (
   <ApolloProvider client={client}>
@@ -60,4 +54,4 @@ export default () => (
       <AppWithAuth />
     </Rehydrated>
   </ApolloProvider>
-)
+);

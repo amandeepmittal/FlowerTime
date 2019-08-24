@@ -6,6 +6,6 @@ const DeleteLikePicture = `
       id
     }
   }
-`
+`;
 
-export default DeleteLikePicture
+export default DeleteLikePicture;

@@ -1,22 +1,20 @@
-import gql from 'graphql-tag'
+import gql from "graphql-tag";
 
 const CreatePicture = gql`
-mutation ($input: CreatePictureInput!) {
-  createPicture(input: $input) {
-    id
-    visibility
-    pictureOwnerUsername
-    pictureOwnerId
-    file {
-      region
-      bucket
-      key
-      uri
+  mutation($input: CreatePictureInput!) {
+    createPicture(input: $input) {
+      id
+      visibility
+      pictureOwnerUsername
+      pictureOwnerId
+      file {
+        region
+        bucket
+        key
+        uri
+      }
     }
   }
-}`
+`;
 
-export default CreatePicture
-
-
-
+export default CreatePicture;

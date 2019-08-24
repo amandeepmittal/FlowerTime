@@ -12,5 +12,5 @@ const CreateFlagPicture = `
       id
     }
   }
-`
-export default CreateFlagPicture
+`;
+export default CreateFlagPicture;

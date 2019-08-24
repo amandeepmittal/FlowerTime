@@ -12,5 +12,5 @@ const CreateLikePicture = `
       id
     }
   }
-`
-export default CreateLikePicture
+`;
+export default CreateLikePicture;

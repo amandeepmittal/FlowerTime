@@ -29,7 +29,6 @@ const listPictures = `
       }
     }
   }
-`
+`;
 
-export default listPictures
-
+export default listPictures;
