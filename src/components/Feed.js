@@ -2,7 +2,8 @@ import API, { graphqlOperation } from "@aws-amplify/api";
 import Auth from "@aws-amplify/auth";
 import Amplify from "@aws-amplify/core";
 import Storage from "@aws-amplify/storage";
-import { ImagePicker, Permissions } from "expo";
+import * as ImagePicker from "expo-image-picker";
+import * as Permissions from "expo-permissions";
 import React from "react";
 import { compose, graphql } from "react-apollo";
 import {
@@ -98,7 +99,7 @@ class Feed extends React.Component {
       await this.uploadToS3AndRecordInDynamodb(result.uri).then(
         Alert.alert(
           "Success",
-          "Your picture was uploaded to the contest.",
+          "Your picture was uploaded",
           [{ text: "Done", onPress: () => this.componentDidMount() }],
           { cancelable: false }
         )
@@ -254,7 +255,7 @@ class Feed extends React.Component {
       await this.listPictures();
       Alert.alert(
         "Success",
-        "Your picture was removed from the contest.",
+        "Your picture was removed",
         [{ text: "Done", onPress: () => this.componentDidMount() }],
         { cancelable: false }
       );
